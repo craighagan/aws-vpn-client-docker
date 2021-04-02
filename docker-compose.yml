@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   vpn-client:
-    image: rdvencioneck/aws-vpn-client
+    image: craighagan/linux-awsclientvpn:latest
     container_name: aws-vpn-client
     network_mode: "host"
     restart: "no"

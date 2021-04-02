@@ -4,7 +4,8 @@ set -e
 echo "server"
 /server &
 
-cp /vpn.{conf,modified.conf}
+python /patch-vpn-config.py --config /vpn.conf > /vpn.conf-fixed
+cp /vpn.{conf-fixed,modified.conf}
 
 sed -i '/^auth-user-pass.*$/d' /vpn.modified.conf
 sed -i '/^auth-federate.*$/d' /vpn.modified.conf
@@ -22,7 +23,7 @@ PROTO=$(cat /vpn.modified.conf | grep "proto " | cut -d " " -f2)
 echo "Connecting to $VPN_HOST on port $PORT/$PROTO"
 wait_file() {
   local file="$1"; shift
-  local wait_seconds="${1:-10}"; shift # 10 seconds as default timeout
+  local wait_seconds="${1:-60}"; shift # 60 seconds as default timeout
   until test $((wait_seconds--)) -eq 0 -o -f "$file" ; do sleep 1; done
   ((++wait_seconds))
 }

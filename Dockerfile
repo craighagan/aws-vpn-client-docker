@@ -46,11 +46,13 @@ RUN apt-get update && \
     dnsutils \
     liblzo2-dev \
     openssl \
-    net-tools
+    net-tools \
+    python
 
 COPY --from=builder /openvpn-2.4.9/src/openvpn/openvpn /openvpn
 COPY --from=builder /server /server
 COPY entrypoint.sh /
+COPY patch-vpn-config.py /
 
 COPY update-resolv-conf /etc/openvpn/scripts/
 
