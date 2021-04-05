@@ -23,7 +23,7 @@ PROTO=$(cat /vpn.modified.conf | grep "proto " | cut -d " " -f2)
 echo "Connecting to $VPN_HOST on port $PORT/$PROTO"
 wait_file() {
   local file="$1"; shift
-  local wait_seconds="${1:-60}"; shift # 60 seconds as default timeout
+  local wait_seconds="${1:-300}"; shift # 300 seconds as default timeout
   until test $((wait_seconds--)) -eq 0 -o -f "$file" ; do sleep 1; done
   ((++wait_seconds))
 }
