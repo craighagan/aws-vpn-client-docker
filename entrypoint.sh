@@ -53,7 +53,7 @@ echo ""
 echo ""
 echo $URL
 sleep 1
-wait_file "saml-response.txt" 30 || {
+wait_file "saml-response.txt" 300 || {
   echo "SAML Authentication timed out"
   exit 1
 }
