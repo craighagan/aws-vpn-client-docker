@@ -45,6 +45,6 @@ iEDPfUYd/x7H4c7/I9vG+o1VTqkC50cRRj70/b17KSa7qWFiNyi2LSr2EIZkyXCn
 0q23KXB56jzaYyWf/Wi3MOxw+3WKt21gZ7IeyLnp2KhvAotnDU0mV3HaIPzBSlCN
 sSi6
 -----END CERTIFICATE-----"""
-    if nr_certs != 3:
+    if nr_certs != 3 or not in_cert:
         print line.strip()
 
